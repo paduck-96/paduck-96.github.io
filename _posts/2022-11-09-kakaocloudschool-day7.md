@@ -10,8 +10,8 @@ tags:
 toc: true
 toc_sticky: true
 
-date: 2022-11-05
-last_modified_at: 2022-11-05
+date: 2022-11-09
+last_modified_at: 2022-11-09
 ---
 
 <pre>
@@ -267,7 +267,7 @@ import {이름 as 다른이름} from "모듈이름";
 3.일반 내장 객체
 1)Object
 =>Javascript의 최상위 객체
-=>Javascriptdpt는 모든 객체가 이 객체를 상속받음
+=>Javascript에서는 모든 객체가 이 객체를 상속받음
 =>객체 생성 방법
 { }
 new Object()
