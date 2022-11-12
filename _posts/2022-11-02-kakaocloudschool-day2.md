@@ -1,6 +1,7 @@
 ---
-title: "HTML 영역과 CSS의 시작"
-excerpt: "html에서 영역을 나누는 요소인 div, span과 iframe. 시각적인 효과를 부여하기 위한 기술인 css"
+title: "HTML 영역과 CSS"
+excerpt: "html에서 영역을 나누는 요소인 div, span, iframe에 대하여 학습하고,
+시각적인 효과를 부여하기 위한 기술인 css에 대해 학습한다"
 
 categories:
   - Blog
@@ -11,7 +12,7 @@ toc: true
 toc_sticky: true
 
 date: 2022-11-02
-last_modified_at: 2022-11-02
+last_modified_at: 2022-11-12
 ---
 
 # HTML

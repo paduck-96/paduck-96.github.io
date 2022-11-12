@@ -1,17 +1,18 @@
 ---
-title: "HTML Form부터 여러 <tag>에 대해서"
-excerpt: "여러 데이터를 받아서 서버에 전송하기 위해 사용하는 html의 form. 다양한 상황에 쓰이는 태그들까지"
+title: "HTML form을 포함한 다양한 태그"
+excerpt: "여러 데이터를 받아서 서버에 전송하기 위해 사용하는 html의 form을 학습하고,
+다양한 HTML 태그들을 학습한다"
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop, html, css]
+  - [Blog, kakaocloudschool, develop, html, html form, html tags]
 
 toc: true
 toc_sticky: true
 
-date: 2022-11-02
-last_modified_at: 2022-11-02
+date: 2022-11-01
+last_modified_at: 2022-11-11
 ---
 
 # Form
