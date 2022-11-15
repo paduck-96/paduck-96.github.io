@@ -1,3 +1,19 @@
+---
+title: "HTML5와 다양한 API"
+excerpt: "HTML5에 들어있는 다양한 API에 대해 학습한다"
+
+categories:
+  - Blog
+tags:
+  - [Blog, kakaocloudschool, develop, javascript, HTML5]
+
+toc: true
+toc_sticky: true
+
+date: 2022-11-15
+last_modified_at: 2022-11-15
+---
+
 # HTML5
 
 ...이어서
