@@ -75,6 +75,8 @@ last_modified_at: 2022-11-15
 
 ### 빈 디렉토리에서 npm init 이라는 명령어로 생성 후 옵션 설정
 
+- 옵션 중에서 package 이름과 디렉토리 이름이 같으면 배포 오류
+
 ### 옵션 설정
 
 - package name  
