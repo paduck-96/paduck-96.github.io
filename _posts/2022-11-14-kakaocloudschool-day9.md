@@ -1,35 +1,40 @@
 ---
-title: ""
-excerpt: ""
+title: "데이터 표현 방법, 서버로 데이터 전달하는 방법 그리고 HTML5"
+excerpt: "데이터 표현 방법들에 학습하고
+서버로 데이터 전달하는 방법에 학습하며
+HTML5에 대해 학습한다"
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop, javascript, DOM]
+  - [Blog, kakaocloudschool, develop, javascript, Data Format, Server Data, HTML5]
 
 toc: true
 toc_sticky: true
 
 date: 2022-11-14
-last_modified_at: 2022-11-14
+last_modified_at: 2022-11-21
 ---
 
 # 데이터 표현 방법
 
-서로 다른 방식의 컴퓨터에서 데이터를 주고 받으려면 표준적인 포맷이 필요
+서로 다른 방식의 컴퓨터에서 `데이터를 주고 받으려면 표준적인 포맷`이 필요
 
-- Parsing
-  가져온 데이터를 해석하는 과정
-- 서버 입장에서는 데이터 표현방식을 데이터를 만들어서 제공  
-  클라이언트 입장에서는 데이터를 파싱해서 출력하는 것이 중요
+- Parsing  
+  가져온 `데이터를 해석`하는 과정
+
+  - **서버 입장**에서는 데이터 표현방식을 `데이터를 만들어서 제공`  
+    **클라이언트 입장**에서는 데이터를 `파싱해서 출력`하는 것이 중요
 
 - DTD  
   HTML, XML은 브라우저 해석 혹은 설정 이용에 사용하는데  
   설정을 만든 곳에서 해석하는데 그 때의 해석 위치
 
 1. 텍스트  
-   일반 문자열 - CSV  
-    구분 기호를 가지고 구분할 수 있도록 만든 포맷
+   일반 문자열
+
+   - **`CSV`**  
+     구분 기호를 가지고 구분할 수 있도록 만든 포맷
 
    - 용량이 작아 변하지 않는 데이터 제공할 때 주로 이용
 
@@ -40,7 +45,7 @@ last_modified_at: 2022-11-14
    - 설정이나 데이터 전송에 이용하나  
      다른 방식보다 용량이 커 사용 빈도 수 감소
 
-3. JSON  
+3. **`JSON`**  
    자바스크립트의 데이터 표현법을 이용하는 방식
 
    - XML 보다 용량이 작아 데이터 전송에 이용
@@ -69,10 +74,10 @@ last_modified_at: 2022-11-14
 
 2. 요청 방식에 따른 데이터 전달
 
-- GET  
+- **`GET`**  
   데이터를 요청할 때 사용하는 방식
 
-  - URL 뒤에 ? 추가하고 이름=값의 형태로 데이터 전송
+  - URL 뒤에 \? 추가하고 `이름 = 값 의 형태`로 데이터 전송
 
     - 데이터 부분을 parameter || query string 이라고 함
       - **한글이 포함될 경우 인코딩 필수**
@@ -83,19 +88,19 @@ last_modified_at: 2022-11-14
 
   조회에는 GET을 사용하고 삭제에는 DELETE를 사용
 
-- POST  
+- **`POST`**  
   삽입, 갱신, ~~삭제~~ 를 할 때 사용하는 방식
-  - HHTP Body에 데이터를 넣어서 전송
+  - **HTTP BODY**에 데이터를 넣어서 전송
   - `보안성이 우수하고, 데이터 길이 제한 없음`
   - `캐싱이 안되기 때문에 자동 재전송 되지 않음`
     - 삽입할 때만 사용 권장  
       갱신은 PUT 등 권장
 
-3. 헤더 설정을 이용해서 데이터 전달
+3. **헤더 설정**을 이용해서 데이터 전달
 
 - 주로 인증 정보 전송할 때 이용
 
-# 다른 방식을 이용한 이용한 Ajax
+# 다른 방식을 이용한 Ajax
 
 **1. Promise를 이용하는 방식**
 
@@ -106,34 +111,37 @@ last_modified_at: 2022-11-14
 **2. Fetch API**  
 서버의 데이터를 가져오는 로직을 단순화한 ajax보다 새로운 API
 
-- 기본적으로 Promise를 리턴하기 때문에 별도 콜백 생성 불필요
+- 기본적으로 Promise를 리턴하기 때문에 `별도 콜백 생성 불필요`
 
 요청 과 응답 등의 요소를 Javascript 에서 접근하고 조작할 수 있는 인터페이스 제공
 
-- fetch( ) 라는 전역 함수를 이용해서 네트워크의 리소스를 비동기적으로 가져올 수 있음
+- fetch( ) 전역 함수를 이용해 `네트워크의 리소스를 비동기적`으로 가져올 수 있음
   - XMLHttpRequest 대신 사용
   - fetch(요청 URL, 옵션)의 형태로 작성하는데 결과는 Promise 객체로 리턴  
     then 과 catch 를 이용해서 처리
     - 옵션: https://developer.mozilla.org/en-US/docs/Web/API/fetch
 
-요청에 성공했을 때 전달되는 객체는 Response
+`요청에 `**성공**`했을 때 전달되는 객체는 `**Response**
 
 - Response 속성
+
   - status  
     상태 코드 값을 담은 정수
   - statusText  
     상태 코드 메시지
   - ok  
     성공 여부 판단
+
 - Response 메서드
+
   - arrayBuffer()  
     바이트 배열
   - **blob()**  
     파일의 내용
-  - formData()  
+  - `formData()`  
     폼의 데이터
     - form의 형태로 응답하는 경우
-  - json()  
+  - `json()`  
     JSON 파싱한 결과
     - JSON으로 응답하는 경우
   - text()  
@@ -165,9 +173,9 @@ last_modified_at: 2022-11-14
    - XHTML4에서 진화한 마크업 언어
    - 디자인 과 내용의 분리  
      특별한 경우가 아니면 디자인은 CSS를 이용
-   - 자바 Applet, Active X, 플래시와 같은 외부 플러그인 최소화
+   - 자바 Applet, Active X, 플래시와 같은 `외부 플러그인 최소화`
      - 자바의 플렉스 나 .Net 의 실버라이트 배제
-   - Semantic  
+   - **Semantic**  
      문서 구조의 의미나 문서 안에 삽입된 데이터의 의미 등을 명확하기 위한 사항 추가
    - 마크 업 언어에 웹 애플리케이션을 만들 수 있는 API를 포함
 
@@ -189,7 +197,7 @@ last_modified_at: 2022-11-14
 
 3. API 변화
 
-   - Cookie가 아닌 로컬 저장소 출현
+   - Cookie가 아닌 `로컬 저장소` 출현
      - **Web Storage**
      - Web SQL
      - Indexed DB
@@ -321,7 +329,7 @@ last_modified_at: 2022-11-14
       Open CV
     - 태그로는 아무 일도 하지 못하고, 자바스크립트로 작업
 
-      ```
+      ```javascript
       <canvas id="아이디" width="너비" height="높이"></canvas>
 
       let 캔버스변수 = document.getElementById("아이디");
@@ -342,7 +350,7 @@ last_modified_at: 2022-11-14
       여러 개의 이미지를 하나의 파일로 만들고 이미지를 적절히 잘라 사용
 
       - 보조 기억 장치에 있는 파일을 읽어 오는게 시간이 많이 소모되는 작업이기 때문에  
-        이미지를 하나로 묶어서 나누어 출력하는 것이 효율적
+        `이미지를 하나로 묶어서 나누어 출력`하는 것이 효율적
 
     - 각 픽셀의 값을 제어 가능
       - 원형 UI 클릭  
@@ -428,9 +436,17 @@ last_modified_at: 2022-11-14
   - pattern  
     정규 표현식 설정 가능
 
-WebClient(브라우저 또는 애플리케이션) <-> Web Server <-> Application Server(controller -service - repository) <-> Data Server(database server, file server)
+---
 
-- Web Server 부터 Data Server 까지는 애플리케이션과 다른 곳에 위치
+WebClient(브라우저 또는 애플리케이션) <->
+
+Web Server <->
+
+Application Server(controller -service - repository) <->
+
+Data Server(database server, file server)
+
+- Web Server 부터 Data Server 까지는 `애플리케이션과 다른 곳에 위치`
   - `Web Client 와 Server 간에 통신에는 트래픽(비용)이 발생`
-    - client->server로 전송하기 전에 유효성 검사 필수
-    - server 가 client 로 부터 data를 받으면 유효성 검사 필수
+    - client->server로 `전송하기 전에 유효성 검사` 필수
+    - server 가 client 로 부터 `data를 받으면 유효성 검사` 필수
