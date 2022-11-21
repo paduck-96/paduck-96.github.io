@@ -567,3 +567,9 @@ LIMIT 개수 OFFSET 건너뛸 행의 개수
 ```
 
 `ORDER BY 와 같이 사용되는 경우가 많음`
+
+### Scala Function
+
+#### 1. Function
+
+데이터베이스에서 함수는 **반드시 리턴**을 해야 함
