@@ -58,7 +58,7 @@ Docker 와 같은 가상화 컨테이너에 설치
 - mariaDB 컨테이너 실행
 
   ```Docker
-  docker run --name mariadb -d -p 외부에서접속할포트번호:MariaDB포트번호 -e MYSQL_ROOT_PASSWORD=루트비밀번호 컨테이너이름
+  docker run --name mariadb -d -p 외부에서접속할포트번호:MariaDB포트번호(실제포트번호) -e MYSQL_ROOT_PASSWORD=루트비밀번호 컨테이너이름
   ```
 
   ###### - docker run --name mariadb -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootPassword mariadb
