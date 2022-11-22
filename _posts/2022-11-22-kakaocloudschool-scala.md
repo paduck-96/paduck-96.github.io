@@ -230,3 +230,45 @@ SET 연산자
 SELECT
 FROM
 ```
+
+# SubQuery
+
+## 1. 개요
+
+다른 SQL 구문 안에 포함된 쿼리
+
+- Sub Query 는 SELECT 구문
+- Sub Query 는 반드시 괄호 안에 작성
+- Sub Query 는 포함하는 Query 가 실행되기 전에 **한 번만** 실행
+
+## 2. 분류
+
+위치에 따른 분류
+
+- FROM 절이 아닌 경우  
+  Sub query
+- FROM 절에 쓰인 경우  
+  Inline View
+
+리턴 되는 데이터에 따른 분류
+
+- 단일행 sub query  
+  리턴되는 결과가 하나의 행
+- 다중행 sub query  
+  리턴되는 결과가 2개 이상의 행
+
+> 하나씩 처리 하는 방법과 sub query 사용이 모두 가능한 경우 있음
+
+## 3. 다중 열 Sub Query
+
+sub query 의 결과가 1개의 컬럼이 아니고 여러 개의 컬럼인 경우
+
+## 4. 다중 행 sub query
+
+sub query 의 결과가 2개 이상의 행인 경우
+
+- `=, <> 는 사용이 안되고 >, >=, <, <= 도 단독 사용 불가`
+  - 단일행 연산자  
+    =, <> 는 하나의 데이터와만 비교 가능
+  - IN 이나 NOT IN 그리고 ANY와 ALL 같은 다중 행 연산자 사용
+    - ANY 와 ALL 은 MAX 와 MIN 으로 대체 가능
