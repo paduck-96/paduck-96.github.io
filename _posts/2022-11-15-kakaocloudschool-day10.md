@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2022-11-15
-last_modified_at: 2022-11-15
+last_modified_at: 2022-11-22
 ---
 
 # HTML5
@@ -84,7 +84,7 @@ last_modified_at: 2022-11-15
 
   `스마트폰 이용 시 옵션 설정이 굉장히 중요`
 
-  - 블루투스 사용 과 GPS 가 가장 배터리를 많이 먹기 때문
+  - `블루투스 사용 과 GPS 가 가장 배터리를 많이 먹기 때문`
 
 - 웹 화면에 현재 위체에 해당하는 카카오 맵 출력
   - KaKao Open API  
@@ -100,13 +100,13 @@ last_modified_at: 2022-11-15
 - 개요  
   파일을 읽고 쓰기 위한 API
 - 방법  
-  input type="file"에 multiple 속성이 추가되어 여러 개 파일 선택 가능
+  input type="file"에 **multiple 속성**이 추가되어 여러 개 파일 선택 가능
 
   - 일반 파일을 읽을 때  
     `이미지 미리보기`
     ```javascript
     FileReader 객체 생성
-    reader.readASdATAURL(파일 객체) 호출
+    reader.readAsDataURL(파일 객체) 호출
     load 이벤트 //전부 읽었을 때 FilerReader 객체의 result에 저장
     error 이벤트 //읽기에 실패햇을 때 실패 이유를 저장한 객체 리턴
     ```
@@ -125,8 +125,8 @@ last_modified_at: 2022-11-15
 
 - 이유
 
-  - 불필요한 트래픽 감소
-    - 메일 앱 접속시 매번 서버의 데이터를 받아오는 건 자원의 낭비
+  - `불필요한 트래픽 감소`
+    - 메일 앱 접속시 매번 서버의 데이터를 받아오는 건 **자원의 낭비**
     ```javascript
     if(파일의 존재 여부 확인){
     맨 처음 접속
@@ -152,7 +152,7 @@ last_modified_at: 2022-11-15
     - NoSQL과 유사
 
 기존에는 Cookie를 사용  
-문자열만 저장할 수 있고, 전송 여부를 클라이언트가 결정 불가(매번 서버 전송)
+`문자열만 저장`할 수 있고, `전송 여부를 클라이언트가 결정 불가`(매번 서버 전송)
 
 - Web Storage
 
@@ -198,7 +198,7 @@ last_modified_at: 2022-11-15
   - `Application > 저장소 항목`에서 저장된 내역 확인 가능
 
 5. Web Worker  
-   Javascript를 이용한 백그라운드 처리
+   Javascript를 이용한 **백그라운드 처리**
    > 현재 작업을 멈추고 다른 작업을 수행할 수 있음
    - `Thread 라는 표현 대신에 Worker 라는 표현을 사용`
 
@@ -249,7 +249,7 @@ last_modified_at: 2022-11-15
 7. Web Push  
    Server Sent Events
 
-   - 클라이언트의 요청이 없어도 서버가 클라이언트에게 메시지를 전송
+   - `클라이언트의 요청이 없어도 서버가 클라이언트에게 메시지를 전송`
      - 알림
        - APNS(Apple Push Notification Service)  
          Apple Server 가 보내는 Push
@@ -257,17 +257,17 @@ last_modified_at: 2022-11-15
          Google Server 가 보내는 Push
 
 8. Web Socket  
-   Web 에서의 TCP 통신을 위한 API
+   `Web 에서의 TCP 통신을 위한 API`
    - 일반적인 Web 요청 처리 방식
      ```javascript
      Client -> Server 하나의 reqeust 전송
      처리 후 response 를 Client 에게 전송 후 접속 종료
      ```
    - 연속되는 작업 처리 방식  
-     Cookie(클라이언트의 브라우저에 저장) Session(서버에 저장) 사용
-   - 일반적인 Web 요청(HTTP, HTTPS)에는 헤더 정보 필요
-     - 작은 사이즈의 데이터에는 오버헤드 발생
-   - Web Socket에는 헤더가 거의 없기 때문에 오버헤드 최소화
+     **Cookie**(클라이언트의 브라우저에 저장) **Session**(서버에 저장) 사용
+   - 일반적인 Web 요청(HTTP, HTTPS)에는 `헤더 정보 필요`
+     - `작은 사이즈의 데이터에는 오버헤드 발생`
+   - Web Socket에는 헤더가 거의 없기 때문에 **오버헤드 최소화**
      - 작은 양의 메시지가 빈번하면 ajax, Fetch API 보다 권장
 
 # 마무리
