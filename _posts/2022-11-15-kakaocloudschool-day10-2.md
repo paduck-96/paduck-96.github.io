@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "NODE.js에 대해 학습한다"
 excerpt: ""
 
 categories:
@@ -11,7 +11,7 @@ toc: true
 toc_sticky: true
 
 date: 2022-11-15
-last_modified_at: 2022-11-15
+last_modified_at: 2022-11-22
 ---
 
 # Node.js
@@ -35,7 +35,7 @@ last_modified_at: 2022-11-15
 ### 단점
 
 - Native 언어로 만든 서버 환경보다는 느릴 수 있음
-- 짧은 시간에 대량의 클라이언트 요청을 대응하는 웹 앱 개발에 **`적합`**
+- **짧은 시간에 대량의 클라이언트 요청을 대응**하는 웹 앱 개발에 **`적합`**
 - 대량의 데이터 조회하고 긴 처리 시간을 요구하는 작업에 **`부적합`**
   - 대용량 연산 작업은 AWS의 Lambda 나 Google Cloud Functions 활용
 
