@@ -423,3 +423,101 @@ JOIN 가능
 ```
 
 !!! 잠 !!!!
+
+# DDL(Data Definition Language)
+
+### 데이터 구조를 생성하고 변경하고 삭제하는 명령어
+
+## 1. 테이블 생성
+
+```sql
+Create [Temporary] Table 테이블 이름(
+    컬럼이름 자료형 [컬럼 제약 조건],
+    ...
+    [테이블 제약 조건]) 조건 나열;
+```
+
+### 자료형
+
+- ### 숫자
+
+  TINYINT(1바이트 - 참/거짓)  
+  INT(INTEGER)  
+  FLOAT  
+  DOUBLE
+
+- ### 문자
+
+  CHAR(길이 고정)  
+  VARCHAR(길이 가변)
+
+  ```sql
+  한글 1글자 3byte;
+  --
+  CHAR 는 남은 메모리 공간 그대로 냅둠
+    내용을 변경할 때 크기가 커져도 공간의 여유가 있어서 가능
+    -- 아이디 등
+  VARCHAR 는 공간이 남을 경우 절약
+    절약된 상황에서 큰 데이터가 들어오면 바로 삽입 불가능
+    확장 하거나 이동 해야함
+    -- 코멘트, 전화번호 등
+  ```
+
+  TEXT
+
+  - 긴 문자열
+    - 저장 목적, 인덱스 생성 불가
+
+  BLOB
+
+  - 파일 내용 저장
+    - 저장 목적, 인덱스 생성 불가
+
+- ### 날짜
+
+  DATE
+
+  - 날짜
+
+  DATETIME
+
+  - 날짜와 시간
+
+  TIMESTAMP
+
+  - 날짜와 시간
+
+  TIME
+
+  - 시간
+
+  YEAR
+
+  - 년도
+
+- ### 기타
+
+  - JSON
+  - GEOMETRY
+
+### 조건 나열
+
+ENGINE
+
+- MyISAM(Indexed Sequential Access Media)
+  - 삽입 / 삭제 / 갱신 불리
+    - 인덱스를 가지고 다녀야 하기 때문
+- InnoDB
+  - 삽입 / 삭제 / 갱신 에 유리
+
+DEFAULT CHARSET
+
+- 한글이 깨지는 경우 한글 설정 옵션으로 utf8 설정
+
+auto_increament = 시작숫자
+
+- 일련번호를 사용할 때 시작숫자부터 시작
+
+Timezone
+
+- Mac에서 사용할 때 시간 대역 안 맞아 설정 필요
