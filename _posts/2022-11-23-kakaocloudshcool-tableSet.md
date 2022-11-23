@@ -274,3 +274,51 @@ ALTER TABLE 테이블이름 AUTO_INCREMENT = 값;
 
 - PK 나 UK 반드시 설정
 - 테이블에서 한 번만 설정 가능
+
+## 10. 참조 무결성
+
+    tEmployee 직원 테이블
+    tProject 직원 수행 프로젝트 테이블
+
+    //foreign key 미설정
+    CREATE TABLE tEmployee(
+        name VARCHAR(20) PRIMARY KEY,
+        salary INT NOT NULL,
+        addr CHAR(100) NOT NULL);
+    )
+
+- 외래키 설정
+  외래키는 상대방 테이블에서 PRIMARY KEY 나 UNIQUE 제약 조건이 설정되어 있어야함
+
+```sql
+-- 컬럼 제약 조건으로 설정
+컬럼이름 자료형 [CONSTRAINT 제약조건이름] REFERENCES 참조하는테이블이름(컬럼이름) 옵션
+-- 테이블 제약조건 설정
+[CONSTRAINT 제약조건이름] FOREIGN KEY(컬럼이름) REFERENCES 참조하는테이블이름(컬럼이름) 옵션
+```
+
+## 11. 외래키 옵션
+
+옵션없이 FOREIGN KEY 를 설정하면 외래키로 참조되는 데이터 삭제 불가
+
+- 참조되지 않는 데이터 삭제 가능
+
+외래키에 의해 참조되는 테이블은 먼저 삭제할 수 없고 `외래키 소유 테이블 삭제 우선`
+
+외래키 설정할 때 옵션
+
+```sql
+ON DELETE [NO ACTION | CASCADE | SET NULL | SET DEFAULT]
+
+ON UPDATE [NO ACTION | CASCADE | SET NULL | SET DEFAULT]
+```
+
+- no action  
+  아무것도 하지 않음
+- cascade  
+  같이 삭제되거나 수정
+- **set null**  
+  null로 변경
+- set default  
+   default 값으로 변경
+  > ON UPDATE 는 잘 사용하지 않는데, PRIMARY KEY 는 불변의 성격
