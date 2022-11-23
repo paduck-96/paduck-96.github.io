@@ -520,3 +520,26 @@ DDL 이나 DCL 문장
 접속이 비정상적으로 종료된 경우
 
 자동으로 ROLLBACK
+
+## 6. LOCK
+
+### Shared LOCK
+
+공유 가능한 LOCK
+
+- 읽기 작업을 할 때 설정
+
+### Exclusive LOCK
+
+공유 불가능한 LOCK
+
+- 이외에 작업에서 설정
+
+> 트랜잭션이 종료되어야만 LOCK이 해제
+
+- Manual transaction mode 일 때  
+  DML 작업 수행 후 COMMIT, ROLLBACK 없이 다른 컴퓨터에서 SELECT은 가능  
+  DML 작업이나 DDL 작업 수행하게 되면 무한 루프 발생
+- LOCK 의 기본 단위는 테이블
+
+`Back Log 문제가 발생할 수 있는데, 정상적으로 요청이 완료되지 않으면 토큰 미반납`
