@@ -322,3 +322,57 @@ ON UPDATE [NO ACTION | CASCADE | SET NULL | SET DEFAULT]
 - set default  
    default 값으로 변경
   > ON UPDATE 는 잘 사용하지 않는데, PRIMARY KEY 는 불변의 성격
+
+# DML 과 Transaction
+
+## 1.DML(data manipulation language)
+
+데이터를 테이블에 삽입, 삭제, 갱신하는 SQL
+
+- 개발자가 사용하는 언어
+
+### 데이터 삽입
+
+```sql
+INSERT INTO 테이블이름(컬럼 이름 나열)
+VALUES(값 나열)
+```
+
+- 컬럼 이름을 생략하면 모든 컬럼의 값을 테이블을 만들 때 사용했던 순으로 대입
+
+### NULL 삽입
+
+- 기본 값이 없는 경우에는 컬럼 이름 생략하고 삽입
+- 명시적으로 값을 NULL 이라고 설정
+  - 문자열의 경우는 "" 형태로 입력해도 NULL로 간주하는 경우 있음
+
+### 여러 개의 데이터 한꺼번에 삽입
+
+- 기본 구조에서 값 나열 계속 붙이기
+
+```sql
+...VALUES(값 나열), (값 나열), ...
+```
+
+### 다른 테이블로부터 조회해서 삽입
+
+```sql
+INSERT INTO 테이블이름(컬럼 이름 나열)
+SELECT 구문
+```
+
+### 조회한 결과로 테이블 생성
+
+```sql
+CREATE TABLE 테이블이름 AS
+SELECT 구문
+```
+
+### 에러 무시하고 삽입
+
+스크립트를 이용할 때 에러 무시하고 삽입하는 방법
+
+```sql
+INSERT IGNORE INTO 테이블이름(컬럼 이름 나열)
+SELECT 구문
+```
