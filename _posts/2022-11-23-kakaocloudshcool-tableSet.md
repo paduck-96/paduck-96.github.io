@@ -612,3 +612,77 @@ DROP VIEW 뷰이름;
 - `view 는 SQL을 가지고 있는 것일 뿐, 실제 데이터는 없음`
 
 > 포트폴리오 제작 시 SQL Mapper를 이용한다면 VIEW 사용 권장
+
+## 2. 절차적 프로그래밍
+
+SQL 은 비절차적
+
+- 작성 순서대로 동작하지 않음
+- SELECT...FROM...
+  - 실행 순서는 FROM -> SELECT
+- 관계형 DB 에서도 절차적 프로그래밍이 가능
+  - 문법은 종류마다 다르다
+  - PL/SQL
+  - T SQL 등...
+
+### - Stored Procdeure
+
+자주 SQL 구문을 함수처럼 미리 만들어두고 이름으로 실행하는 개체
+
+- 장점
+  - 한 번 실행하고 나면 메모리에 상주하여 성능 향상
+  - 테이블 구조 몰라도 작업 가능해 보안 향상
+- 함수는 리턴을 하지만, procedure 는 리턴하지 않음
+
+  ```sql
+  -- 생성
+  DELIMITER 기호 2개
+  CREATE [OR REPLACE] PROCEDURE 이름(매개변수)
+  BEGIN
+    필요한 SQL 프로그래밍
+  END 기호 2개
+  DELEMITER ;
+
+  --호출
+  CALL 프로시저이름(매개변수 나열)
+
+  -- 삭제
+  DROP PROCEDURE 이름
+  ```
+
+  - 하나의 SQL 구문이 아니라 스크립트 형태로 실행
+
+  > ORM 이 아닌 SQL Mapper 이용 시 필수적으로 한 개 이상 사용
+
+### - TRIGGER
+
+어떤 사건(INSERT, UPDATE, DELETE) 이  
+발생했을 때 절차적 프로그래밍 부분을 자동으로 수행하기 위한 개체
+
+유효성 검사를 해서 SQL을 실행하지 않도록 하거나  
+DML 작업을 수행했을 때 로그를 기록하거나  
+다른 DML 작업을 연쇄적으로 실행하는 등의 작업 수행
+
+애플리케이션 개발자 입장에서는 프로그래밍으로 처리하려고 하기 때문에 잘 사용하지 않자만 보안을 위해서 쓰는게 좋음
+
+- **`삽입 트리거`**  
+  하나의 테이블에 데이터를 삽입하면 다른 테이블에 데이터가 자동으로 삽입되도록 하는 트리거
+  - 블로그 회원가입 시 가입한 회원 데이터 관리하는 테이블 별도 생성
+
+```sql
+-- 데이터 삽입
+CREATE TABLE EMP01(
+    EMPNO INT PRIMARY KEY,
+    ENAME VARCHAR(10),
+    JOB VARCHAR(30);
+)
+-- 트리거 테이블
+CREATE TABLE SAL01(
+    SALNO INT PRIMARY KEY AUTO_INCREMENT,
+    SAL FLOAT(7,2),
+    EMPNO INT REFERENCES EMP01(EMPNO) ON DELETE CASCADE);
+)
+
+```
+
+# Partition
