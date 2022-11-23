@@ -1,6 +1,8 @@
 ---
-title: ""
-excerpt: ""
+title: "서버, 노드의 여러가지 모듈들에 관하여"
+excerpt: "서버에 대해 학습하고
+데이터 전송 방식에 대해 학습하고
+노드의 여러가지 모듈들에 대해 학습한다."
 
 categories:
   - Blog
@@ -11,7 +13,7 @@ toc: true
 toc_sticky: true
 
 date: 2022-11-17
-last_modified_at: 2022-11-17
+last_modified_at: 2022-11-23
 ---
 
 # 패키지 시스템
@@ -25,7 +27,7 @@ last_modified_at: 2022-11-17
 
 #### 1. package.json
 
-노드에서 패키지 관리를 위한 설정 파일
+노드에서 `패키지 관리를 위한 설정 파일`
 
 - java 에서의 build.gradle 이나 pom.xml 역할 수행
 
@@ -83,11 +85,11 @@ npm install 패키지 이름 나열(공백으로 구분)
 
 > Major Version . Minor Version . Patch
 
-- Major Version  
+- `Major Version`  
   하위 버전과 호환 어려울 수 있음
-- Minor Version  
+- `Minor Version`  
   기능 변경
-- Patch  
+- `Patch`  
   오류 수정 했을 때 변경
 
 - alpha  
@@ -280,7 +282,7 @@ URL
 
 ### 10. AXIOS 라이브러리
 
-브라우저 나 Node.js 에서 Promise API를 이용해서 http 비동기 통신 도와주는 API
+브라우저 나 Node.js 에서 `Promise API를 이용해서 http 비동기 통신 `도와주는 API
 
 - 자바스크립트의 Fetch API를 사용하기 쉽게 해주는 라이브러리
 
@@ -399,7 +401,7 @@ https 서버거 아니면 접속 못하게 하기도 함
 
 ### 13. Cluster
 
-CPU 코어를 전부 사용할 수 있도록 해주는 모듈
+`CPU 코어를 전부 사용할 수 있도록 해주는 모듈`
 
 여러 개의 연산을 동시에 수행할 수 있도록 해주는 모듈
 

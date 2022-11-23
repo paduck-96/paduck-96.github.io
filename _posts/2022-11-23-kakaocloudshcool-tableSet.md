@@ -686,3 +686,5 @@ CREATE TABLE SAL01(
 ```
 
 # Partition
+
+1]
