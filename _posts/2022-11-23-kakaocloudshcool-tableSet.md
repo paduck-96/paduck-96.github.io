@@ -521,6 +521,8 @@ DDL 이나 DCL 문장
 
 자동으로 ROLLBACK
 
+---
+
 ## 6. LOCK
 
 ### Shared LOCK
@@ -543,3 +545,70 @@ DDL 이나 DCL 문장
 - LOCK 의 기본 단위는 테이블
 
 `Back Log 문제가 발생할 수 있는데, 정상적으로 요청이 완료되지 않으면 토큰 미반납`
+
+---
+
+# 테이블 이외의 객체
+
+VIEW 나 PROCEDURE, TRIGGER, INDEX 가 데이터베이스 사용 성능을 향상 시키기 위한 개체인데  
+최근의 프로그래밍에서는 **IN MEMORY DB** 개념의 형태를 사용하기 때문에 이 개체 사용 이점이 별로 없음
+
+- 예전  
+  애플리케이션 서버의 요청에 대해 데이터 서버의 결과 응답
+- 현재(IN MEMORY DB)  
+  애플리케이션 서버가 부팅될 때 요청을 바로 던져 데이터 서버 값 가져오기
+  - 스프링 Bean 같은 느낌
+
+## 1. VIEW
+
+자주 사용하는 SELECT 구문을 하나의 테이블의 형태로 사용하기 위한 개체
+
+### - 장점
+
+- SELECT 구문을 메모리에 적재하기 때문에 속도 향상
+- 필요한 부분만 노출하면 되어 보안 향상
+
+### - Inline VIew
+
+- FROM 절에 사용한 SELECT 구문
+- SELECT 구문의 리턴값은 하나의 테이블처럼 사용 가능
+- `SELECT 구문 결과는 이름이 없어` 반드시 이름 생성
+  - 오라클에서는 TOP-N 을 구현해 중요
+
+### - VIEW
+
+```sql
+CREATE [OR REPLACE] VIEW 뷰이름
+AS
+SELECT 구문
+[WITH CHECK OPTION]
+[WITH READ ONLY]
+```
+
+- VIEW 는 ALTER 로 수정이 불가능해 수정 시 OR REPLACE 사용
+- VIEW 는 테이블처럼 사용할 수 있기 때문에 읽기 쓰기 모두 가능
+- WITH CHECK OPTION  
+  뷰를 만들 떄 사용한 조건 과 일치한 데이터만 수정, 삭제, 삽입
+- WITH READ ONLY  
+  쓰기를 못하게 하는 옵션
+
+### - VIEW 삭제
+
+```sql
+DROP VIEW 뷰이름;
+```
+
+    // DEPT에서 DEPTNO 30인 데이터 자주 사용
+
+    CREATE VIEW DEPTVIEW
+    AS
+    SELECT *
+    FROM DEPT
+    WHERE DEPTNO = 30; ======>
+    SELECT * FROM DEPT WHERE DEPTNO = 30; 과 같음
+
+`한 번 컴파일 되면 SQL 이 메모리에 상주하여 빠르게 사용 가능`
+
+- `view 는 SQL을 가지고 있는 것일 뿐, 실제 데이터는 없음`
+
+> 포트폴리오 제작 시 SQL Mapper를 이용한다면 VIEW 사용 권장
