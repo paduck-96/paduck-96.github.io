@@ -38,6 +38,8 @@ create table contact(
 )ENGINE=MyISAM
 ```
 
+---
+
 ## 2. 테이블 구조 변경
 
 ### 기본 형식
@@ -93,6 +95,8 @@ ALTER TABLE 테이블이름 MODIFY COLUMN 컬럼이름 자료형 AFTER 앞컬럼
 ALTER TABLE 원래테이블이름 RENAME 새로운테이블
 ```
 
+---
+
 ## 3. 테이블 삭제
 
 ### 기본 형식
@@ -103,13 +107,15 @@ DROP TABLE 테이블이름;
 
 ### 테이블 삭제 불가능
 
-**외래키로 참조되는 테이블**은 `외래키를 소유하고 있는 테이블 삭제`가 우선
+## **외래키로 참조되는 테이블**은 `외래키를 소유하고 있는 테이블 삭제`가 우선
 
 ## 4. 테이블 데이터 삭제
 
 ```sql
 TRUNCATE TABLE 테이블이름
 ```
+
+---
 
 ## 5. 테이블 압축
 
@@ -119,11 +125,15 @@ CREATE TABLE ROW_FORMAT = COMPRESSED
 
 저장 공간 줄어드나 작업 속도 느려짐
 
+---
+
 ## 6. 주석 설정
 
 ```sql
 COMMENT ON TABLE 테이블이름 IS "주석";
 ```
+
+---
 
 ## 7. 제약 조건(Constraint)
 
@@ -136,6 +146,8 @@ COMMENT ON TABLE 테이블이름 IS "주석";
 
 - Domain Integrity(도메인 무결성)  
   속성의 값은 정해진 도메인의 값을 가져야 한다
+
+---
 
 ### 2. NOT NULL
 
@@ -151,6 +163,8 @@ NULL 일 수 없다 라는 제약 조건
 ```
 
 `기본은 NULL 허용`
+
+---
 
 ### 3. DEFAULT
 
@@ -169,6 +183,8 @@ DEFAULT 값
 - 날짜  
   현재 시간(CURRENT_TIMESTAMP 나 NOW 등)
 
+---
+
 ### 4. CHECK
 
 값의 종류 나 범위를 제한하기 위한 제약조건
@@ -180,6 +196,8 @@ GENDER CHAR(3) CHECK(GENDER IN ("남", "여"))
 SCORE INTEGER CHECK(SCORE BETWEEN 0 AND 100)
 --
 ```
+
+---
 
 ## 5. PRIMARY KEY(기본키)
 
@@ -216,6 +234,8 @@ PRIMARY KEY 는 자동으로 **클러스터 인덱스** 를 생성
 
 ### ` PRIMARY KEY 는 NOT NULL 이고 UNIQUE`
 
+---
+
 ## 6. UNIQUE
 
 중복 값을 가질 수 없도록 하는 제약조건
@@ -246,6 +266,8 @@ CONSTRAINT 제약조건이름
   - FOREIGN KEY  
     fk
 
+---
+
 ## 8. 제약조건 수정
 
 ```sql
@@ -259,6 +281,8 @@ ALTER TABLE 테이블이름 DROP CONSTRAINT 제약조건이름;
 -- NOT NULL 설정일 경우
 -- 컬럼 자료형 수정
 ```
+
+---
 
 ## 9. Sequence(일련번호)
 
@@ -274,6 +298,8 @@ ALTER TABLE 테이블이름 AUTO_INCREMENT = 값;
 
 - PK 나 UK 반드시 설정
 - 테이블에서 한 번만 설정 가능
+
+---
 
 ## 10. 참조 무결성
 
@@ -296,6 +322,8 @@ ALTER TABLE 테이블이름 AUTO_INCREMENT = 값;
 -- 테이블 제약조건 설정
 [CONSTRAINT 제약조건이름] FOREIGN KEY(컬럼이름) REFERENCES 참조하는테이블이름(컬럼이름) 옵션
 ```
+
+---
 
 ## 11. 외래키 옵션
 
@@ -323,6 +351,8 @@ ON UPDATE [NO ACTION | CASCADE | SET NULL | SET DEFAULT]
    default 값으로 변경
   > ON UPDATE 는 잘 사용하지 않는데, PRIMARY KEY 는 불변의 성격
 
+---
+
 # DML 과 Transaction
 
 ## 1.DML(data manipulation language)
@@ -330,6 +360,8 @@ ON UPDATE [NO ACTION | CASCADE | SET NULL | SET DEFAULT]
 데이터를 테이블에 삽입, 삭제, 갱신하는 SQL
 
 - 개발자가 사용하는 언어
+
+---
 
 ## 2. 데이터 삽입
 
@@ -377,6 +409,8 @@ INSERT IGNORE INTO 테이블이름(컬럼 이름 나열)
 SELECT 구문
 ```
 
+---
+
 ## 3. 데이터 삭제
 
 ```sql
@@ -393,6 +427,8 @@ DELETE FROM 테이블이름 [WHERE 조건];
 
 외래키 옵션 없이 생성되면 삭제가 되지 않을 수도 있음
 
+---
+
 ## 4. 데이터 수정
 
 ```sql
@@ -402,3 +438,85 @@ SET 수정할칼럼 = 값, ...
 ```
 
 - where 절 생략시 테이블 모든 데이터 수정
+
+---
+
+## 5. Transaction
+
+`한 번에 수행`되어야 하는 `논리적인 작업의 단위`
+
+- 1개 이상의 DML 문장으로 구성
+
+### 트랜잭션이 가져야 하는 성질
+
+- Atomicity(원자성)  
+  All Or Nothing > 전부 아니면 전무
+- Consistency(일관성)  
+  트랜잭션 수행 전 과 수행 후의 결과가 일관성 있어야 함
+
+- Isolation(격리성, 독립성)  
+  하나의 트랜잭션은 다른 트랜잭션의 영향을 받으면 안 되고 독립적 수행
+- Durability(영속성, 지속성)  
+  한 번 완료된 트랜잭션은 영원히 반영되어 수정할 수 없어야 한다
+
+### 트랜잭션 구현 원리
+
+DML 작업을 수행할 때는 원본 데이터가 아닌 `임시 작업 영역에 데이터 복사 후 진행`
+
+- 작업 전부 완료하면 원본에 변경 내역을 반영; **COMMIT**
+- 작업 도중 실패 시 변경 내역 미반영; **ROLLBACK**
+
+### 트랜잭션 명령어
+
+#### COMMIT
+
+- 원본 반영
+
+#### ROLLBACK
+
+- 원본 미반영
+
+#### SAVEPOINT
+
+- ROLLBACK 할 위치 선정
+
+### `트랜잭션 모드`
+
+#### Manual
+
+- 사용자가 직접 COMMIT 과 ROLLBACK 을 하도록 하는 모드
+
+#### Auto
+
+- 하나의 명령어가 성공적으로 수행되면 자동으로 COMMIT
+
+프로그래밍 언어에서 데이터베이스 연걸하거나 접속 도구 등에서  
+데이터베이스 서버 접속해 작업 하는 경우 **Auto 설정 경우 있음**
+
+- 트랜잭션 이용하려면 manual 로 설정해야 하는 필요성 있음
+
+**` 실제 서비스에서는 Service 단위로 트랜잭션을 구현해야 함`**
+
+### 트랜잭션 생성 과 종료
+
+- 생성  
+  DML 문장이 성공적으로 완료되면 생성
+- 종료  
+  COMMIT 이나 ROLLBACK 을 수행한 경우
+
+### AUTO COMMIT
+
+DDL 이나 DCL 문장
+
+- CREATE, ALTER, DROP, TRUNCATE  
+  DCL 문장을 수행
+- GRANT, REVOKE
+  접속 프로그램을 정상적으로 종료한 경우
+
+자동으로 COMMIT
+
+### AUTO ROLLBACK
+
+접속이 비정상적으로 종료된 경우
+
+자동으로 ROLLBACK
