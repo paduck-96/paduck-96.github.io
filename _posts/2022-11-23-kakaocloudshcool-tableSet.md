@@ -331,7 +331,7 @@ ON UPDATE [NO ACTION | CASCADE | SET NULL | SET DEFAULT]
 
 - 개발자가 사용하는 언어
 
-### 데이터 삽입
+## 2. 데이터 삽입
 
 ```sql
 INSERT INTO 테이블이름(컬럼 이름 나열)
@@ -376,3 +376,19 @@ SELECT 구문
 INSERT IGNORE INTO 테이블이름(컬럼 이름 나열)
 SELECT 구문
 ```
+
+## 3. 데이터 삭제
+
+```sql
+DELETE FROM 테이블이름 [WHERE 조건];
+```
+
+- where 절 생략하면 모든 데이터 삭제
+- TRUNCATE 와 유사하나, DELETE 는 `트랜잭션 설정`하면 **복구 가능**
+
+`INSERT 는 성공하면 반드시 1개 이상 행이 영향`을 받으나  
+`DELETE / UPDATE 는 where 절로 0개 이상의 행이 영향 받음`
+
+- 조건에 맞는 데이터 없으면 영향 받는 행 수 0
+
+외래키 옵션 없이 생성되면 삭제가 되지 않을 수도 있음
