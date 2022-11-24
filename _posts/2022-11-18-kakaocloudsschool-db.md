@@ -1,11 +1,12 @@
 ---
-title: ""
-excerpt: ""
+title: "Database 와 RDBMS"
+excerpt: "Database의 이론적인 내용에 대해 학습하고,
+RDBMS의 구성과 기술 등에 대해 학습한다."
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop]
+  - [Blog, kakaocloudschool, develop, database, RDBMS]
 
 toc: true
 toc_sticky: true
@@ -18,17 +19,19 @@ last_modified_at: 2022-11-24
 
 ## 데이터와 정보
 
-### 데이터
+### - 데이터
 
 자료 자체
 
-### 정보
+### - 정보
 
 분석이나 가공이 완료된 것
 
-### 지식
+### - 지식
 
-### 지혜
+### - 지혜
+
+---
 
 ## 데이터의 관리
 
@@ -138,8 +141,10 @@ grant, revoke, (commit, rollback)
     세로 줄은 속성(컬럼)  
     가로 줄은 레코드(튜플)  
     속성이 가질 수 있는 값인 도메인  
-    테이블에서 속성의 수는 차수  
-    키
+    테이블에서 속성의 수는 차수
+
+### 키
+
 - 각 튜플들을 데이터 값들에 의해 유일하게 식별할 수 있는 속성 / 집합
   - 슈퍼 키  
     속성 개수에 상관 없이 다른 튜플 과 구분할 수 있는 속성 / 집합
