@@ -1,17 +1,18 @@
 ---
-title: ""
-excerpt: ""
+title: "Node 미들웨어-session, multer, routing, template engine 그리고 params"
+excerpt: "Node의 session, multer, routing, template engine 등 다양한 미들웨어들에 대해서 학습하고,
+params에 대해 학습한다."
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop]
+  - [Blog, kakaocloudschool, develop, session, multer, Routing, templat engine, params]
 
 toc: true
 toc_sticky: true
 
 date: 2022-11-18
-last_modified_at: 2022-11-18
+last_modified_at: 2022-11-24
 ---
 
 # Node Express
@@ -23,11 +24,11 @@ node 라이브러리 중에서 웹 에플리케이션 서버를 만드는 가장
 Filter, AoP, Proxy Pattern
 
 - Proxy Server  
-  예시로, js는 브라우저 밖으로 나갈 수 없기 때문에 프록시 서버에 요청해서 가져오는 것
+  예시로, `js는 브라우저 밖으로 나갈 수 없기` 때문에 `프록시 서버에 요청`해서 가져오는 것
 - Filter  
   작업 과정 상 필터링이 들어가는 것
 - AoP
-  시점 차이의 기준으로 각 시점의 차이로 인하면 반드시 따로 구분
+  `시점 차이의 기준`으로 각 시점의 차이로 인하면 반드시 따로 구분
 
 - 클라이언트의 요청을 처리하기 전이나 처리 한 후에 공통으로 해야 할 작업을 미리 만들어두고 사용하는 것
 
@@ -76,7 +77,7 @@ node-multer로 파일 처리 할 때
 
 ```javascript
 multer 객체 생성
-  disckStorage // 공간 정보 설정
+  diskStorage // 공간 정보 설정
     destination //경로
     filename //파일명(파일명+날짜+확정식)
   limits // 사이즈
@@ -122,7 +123,7 @@ multer 객체 생성
 - index.js 파일 생성 후 기본 처리 요청 코드 작성
 - user.js 파일 생성 후 user 포함된 요청 처리 코드 작성
 - board.js 파일 생성 후 board 포함된 요청 처리 코드 작성
-- router로 구분하기ㅌ
+- router로 구분하기
 - url 과 매핑
 
 ## 5. URL의 일부 파라미터로 사용

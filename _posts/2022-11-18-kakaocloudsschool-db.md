@@ -1,3 +1,19 @@
+---
+title: ""
+excerpt: ""
+
+categories:
+  - Blog
+tags:
+  - [Blog, kakaocloudschool, develop]
+
+toc: true
+toc_sticky: true
+
+date: 2022-11-18
+last_modified_at: 2022-11-24
+---
+
 # DATABASE
 
 ## 데이터와 정보
