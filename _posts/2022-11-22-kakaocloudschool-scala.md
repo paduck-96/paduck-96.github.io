@@ -1,24 +1,25 @@
 ---
-title: "Scala Function"
-excerpt: ""
+title: "Scala Function과 SQL 언어에 대해 학습"
+excerpt: "SCala Function 의 종류에 대해 학습하고
+SQL 언어의 구조와 형식 조건절에 대해 학습한다"
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop]
+  - [Blog, kakaocloudschool, develop, SQL]
 
 toc: true
 toc_sticky: true
 
-date: 2022-11-22
-last_modified_at: 2022-11-22
+date: 2022-11-25
+last_modified_at: 2022-11-25
 ---
 
 # Scala Function
 
 ## 하나의 데이터를 받아서 하나의 데이터를 리턴하는 함수
 
-컬럼을 데이터로 제공하면 각 컬럼 데이터 단위로 작업 후 결과를 하나의 컬럼으로 리턴
+`컬럼을 데이터로 제공`하면 각 `컬럼 데이터 단위`로 `작업 후 결과를 하나의 컬럼`으로 리턴
 
 ### 1. 수치 함수
 
@@ -350,7 +351,7 @@ JOIN 테이블의 순서
 - 선행 테이블에 조건을 설정해 데이터 추출 후 후행 테이블의 데이터를 결합
 
   - 조건 확인 후 `데이터 추출 개수가 적은 테이블`을 선행으로 사용
-  - 한쪽에만 적용된다면 조건 적용되는 테이블 먼저 기재
+  - 한쪽에만 적용된다면 `조건 적용되는 테이블 먼저 기재`
 
 ## 3. Non Equi Join
 
@@ -406,23 +407,24 @@ ON 테이블.컬럼 = 테이블.컬럼;
 다른 테이블에 존재하지 않아도 데이터는  
  그 테이블의 모든 칼럽 값을 NULL
 
-0
----`
-from EMP RIGHT OUTER JOIN Dept
-ON EMP.DEPETO = DEOT.DEPTTO
-
 ## 7. 다중 조인
 
-#### 3개 상의 테이블
+#### 3개 상의 테이블도 가능
 
-JOIN 가능
+2개 테이블을 JOIN을 하고 난 후 다른 테이블 과 JOIN을 하는 형식
 
-```
+## `JOIN 시 주의 사항`
 
-- 2개 테이블 join 하고 다른 케이블가 도메인 과 JS offie
-```
+JOIN은 메모리를 많이 사용하기 때문에 최대한 자제
 
-!!! 잠 !!!!
+- 관계형 데이터베이스의 최대 단점이 빈번한 JOIN의 문제
+- JOIN 없이 해결할 수 있는 문제는 JOIN 없이 해결
+
+`반드시 JOIN이 필요한 경우 `
+
+- SELECT 절에 기재하는 조회 컬럼이 2개 이상의 테이블에 존재하는 경우
+- 그 이외의 경우는 대부분 Sub Query 로 해결이 가능
+  - Sub Query를 사용하면 SQL 이 길어질 가능성이 높아짐
 
 # DDL(Data Definition Language)
 
