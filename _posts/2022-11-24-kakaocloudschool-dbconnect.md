@@ -1,17 +1,18 @@
 ---
-title: ""
-excerpt: ""
+title: "Node에서 MariaDB 연동"
+excerpt: "Node에서 MariaDB를 연동하고
+테이블 생성, 컬럼 생성 등의 작업을 학습한다"
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop, html, html form, html tags]
+  - [Blog, kakaocloudschool, develop, node, mariadb]
 
 toc: true
 toc_sticky: true
 
 date: 2022-11-24
-last_modified_at: 2022-11-24
+last_modified_at: 2022-11-28
 ---
 
 # Node + Maria DB
