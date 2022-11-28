@@ -1,17 +1,20 @@
 ---
-title: "MariaDB"
-excerpt: ""
+title: "테이블 구조와 제약조건, DML과 트랜잭션 그리고 테이블 이외 객체에 대해"
+excerpt: "테이블 구조 관련 구문에 대해 학습하고
+제약조건에 대해 학습하고
+DML과 트랜잭션에 대해 학습하고
+테이블 이외의 객체에 대해 학습한다."
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop]
+  - [Blog, kakaocloudschool, develop, table structure, constraint, DML, transaction, trigger, procedure, view]
 
 toc: true
 toc_sticky: true
 
 date: 2022-11-23
-last_modified_at: 2022-11-23
+last_modified_at: 2022-11-28
 ---
 
 ### 테이블 생성
@@ -286,7 +289,7 @@ ALTER TABLE 테이블이름 DROP CONSTRAINT 제약조건이름;
 
 ## 9. Sequence(일련번호)
 
-컬럼 이름 뒤에 AUTO_INCREMENT 를 설정하면 일련번호 자동생성
+컬럼 이름 뒤에 **AUTO_INCREMENT** 를 설정하면 일련번호 자동생성
 
 - 생성되면 따로 값 대입 불필요
 
@@ -313,8 +316,8 @@ ALTER TABLE 테이블이름 AUTO_INCREMENT = 값;
         addr CHAR(100) NOT NULL);
     )
 
-- 외래키 설정
-  외래키는 상대방 테이블에서 PRIMARY KEY 나 UNIQUE 제약 조건이 설정되어 있어야함
+- 외래키 설정  
+  외래키는 `상대방 테이블에서 PRIMARY KEY 나 UNIQUE 제약 조건이 설정`되어 있어야함
 
 ```sql
 -- 컬럼 제약 조건으로 설정
@@ -327,7 +330,7 @@ ALTER TABLE 테이블이름 AUTO_INCREMENT = 값;
 
 ## 11. 외래키 옵션
 
-옵션없이 FOREIGN KEY 를 설정하면 외래키로 참조되는 데이터 삭제 불가
+옵션없이 FOREIGN KEY 를 설정하면 `외래키로 참조되는 데이터 삭제 불가`
 
 - 참조되지 않는 데이터 삭제 가능
 
@@ -425,7 +428,7 @@ DELETE FROM 테이블이름 [WHERE 조건];
 
 - 조건에 맞는 데이터 없으면 영향 받는 행 수 0
 
-외래키 옵션 없이 생성되면 삭제가 되지 않을 수도 있음
+`외래키 옵션 없이 생성되면 삭제가 되지 않을 수도 있음`
 
 ---
 
@@ -445,18 +448,18 @@ SET 수정할칼럼 = 값, ...
 
 `한 번에 수행`되어야 하는 `논리적인 작업의 단위`
 
-- 1개 이상의 DML 문장으로 구성
+- `1개 이상의 DML 문장`으로 구성
 
 ### 트랜잭션이 가져야 하는 성질
 
-- Atomicity(원자성)  
+- **Atomicity(원자성)**  
   All Or Nothing > 전부 아니면 전무
-- Consistency(일관성)  
+- **Consistency(일관성)**  
   트랜잭션 수행 전 과 수행 후의 결과가 일관성 있어야 함
 
-- Isolation(격리성, 독립성)  
+- **Isolation(격리성, 독립성)**  
   하나의 트랜잭션은 다른 트랜잭션의 영향을 받으면 안 되고 독립적 수행
-- Durability(영속성, 지속성)  
+- **Durability(영속성, 지속성)**  
   한 번 완료된 트랜잭션은 영원히 반영되어 수정할 수 없어야 한다
 
 ### 트랜잭션 구현 원리
@@ -506,7 +509,7 @@ DML 작업을 수행할 때는 원본 데이터가 아닌 `임시 작업 영역�
 
 ### AUTO COMMIT
 
-DDL 이나 DCL 문장
+`DDL` 이나 `DCL` 문장
 
 - CREATE, ALTER, DROP, TRUNCATE  
   DCL 문장을 수행
@@ -544,7 +547,7 @@ DDL 이나 DCL 문장
   DML 작업이나 DDL 작업 수행하게 되면 무한 루프 발생
 - LOCK 의 기본 단위는 테이블
 
-`Back Log 문제가 발생할 수 있는데, 정상적으로 요청이 완료되지 않으면 토큰 미반납`
+`Back Log 문제가 발생할 수 있는데, 정상적으로 요청이 완료되지 않으면 `**`토큰 미반납`**
 
 ---
 
@@ -555,13 +558,13 @@ VIEW 나 PROCEDURE, TRIGGER, INDEX 가 데이터베이스 사용 성능을 향�
 
 - 예전  
   애플리케이션 서버의 요청에 대해 데이터 서버의 결과 응답
-- 현재(IN MEMORY DB)  
+- `현재(IN MEMORY DB)`  
   애플리케이션 서버가 부팅될 때 요청을 바로 던져 데이터 서버 값 가져오기
   - 스프링 Bean 같은 느낌
 
 ## 1. VIEW
 
-자주 사용하는 SELECT 구문을 하나의 테이블의 형태로 사용하기 위한 개체
+자주 사용하는 `SELECT 구문을 하나의 테이블의 형태`로 사용하기 위한 개체
 
 ### - 장점
 
@@ -615,7 +618,7 @@ DROP VIEW 뷰이름;
 
 ## 2. 절차적 프로그래밍
 
-SQL 은 비절차적
+`SQL 은 비절차적`
 
 - 작성 순서대로 동작하지 않음
 - SELECT...FROM...
@@ -627,7 +630,7 @@ SQL 은 비절차적
 
 ### - Stored Procdeure
 
-자주 SQL 구문을 함수처럼 미리 만들어두고 이름으로 실행하는 개체
+자주 쓰는 SQL 구문을 `함수처럼 미리` 만들어두고 `이름으로 실행`하는 개체
 
 - 장점
   - 한 번 실행하고 나면 메모리에 상주하여 성능 향상
@@ -656,14 +659,14 @@ SQL 은 비절차적
 
 ### - TRIGGER
 
-어떤 사건(INSERT, UPDATE, DELETE) 이  
-발생했을 때 절차적 프로그래밍 부분을 자동으로 수행하기 위한 개체
+어떤 사건(**INSERT**, **UPDATE**, **DELETE**) 이  
+발생했을 때 절차적 프로그래밍 부분을 `자동으로 수행`하기 위한 개체
 
-유효성 검사를 해서 SQL을 실행하지 않도록 하거나  
-DML 작업을 수행했을 때 로그를 기록하거나  
-다른 DML 작업을 연쇄적으로 실행하는 등의 작업 수행
+> 유효성 검사를 해서 SQL을 실행하지 않도록 하거나  
+> DML 작업을 수행했을 때 로그를 기록하거나  
+> 다른 DML 작업을 연쇄적으로 실행하는 등의 작업 수행
 
-애플리케이션 개발자 입장에서는 프로그래밍으로 처리하려고 하기 때문에 잘 사용하지 않자만 보안을 위해서 쓰는게 좋음
+애플리케이션 개발자 입장에서는 프로그래밍으로 처리하려고 하기 때문에 잘 사용하지 않자만 `보안을 위해서` 쓰는게 좋음
 
 - **`삽입 트리거`**  
   하나의 테이블에 데이터를 삽입하면 다른 테이블에 데이터가 자동으로 삽입되도록 하는 트리거
@@ -681,8 +684,6 @@ CREATE TABLE SAL01(
     SALNO INT PRIMARY KEY AUTO_INCREMENT,
     SAL FLOAT(7,2),
     EMPNO INT REFERENCES EMP01(EMPNO) ON DELETE CASCADE);
-)
-
 ```
 
 # Partition
