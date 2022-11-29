@@ -1,11 +1,11 @@
 ---
 title: "Node.js에서 데이터베이스 ORM"
-excerpt: ""
+excerpt: "Node.js의 데이터베이스 ORM인 Sequelize에 대해 학습한다"
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop, node, ORM, database]
+  - [Blog, kakaocloudschool, develop, node, ORM, database, Sequelize]
 
 toc: true
 toc_sticky: true
@@ -16,7 +16,7 @@ last_modified_at: 2022-11-29
 
 # SPA 구현 방법
 
-### 각 콘텐츠에 해당하는 별도의 html 파일을 만들고 이를 불러들이는 방식
+### `각 콘텐츠에 해당하는 별도의 html 파일`을 만들고 이를 불러들이는 방식
 
 - 하나의 HTML 파일에 스크립트를 이용해서 여러 개의 콘텐츠 출력 방식 X
 - 이렇게 만들어진 콘텐츠에 해당하는 파일 => **컴포넌트**
@@ -38,7 +38,7 @@ last_modified_at: 2022-11-29
 
 ## 3. ORM
 
-관계형 데이터베이스의 테이블을 클래스, 테이블의 행을 인스턴스와 매핑해 사용
+관계형 데이터베이스의 `테이블을 클래스`, 테이블의 `행을 인스턴스`와 매핑해 사용
 
 - 성능이 좋아 솔루션 개발에 주로 이용
 - JPA(Hibernate 로 구현 많음), Sequelize, Django 등
@@ -76,11 +76,11 @@ npx sequelize init
 
 #### **`config`**
 
-데이터베이스 접속 정보 저장
+데이터베이스 **접속 정보** 저장
 
 #### **`models`**
 
-각 테이블 과 매핑되는 클래스 설정
+각 테이블 과 **매핑되는 클래스** 설정
 
 #### migrations
 
@@ -111,7 +111,7 @@ npx sequelize init
 
 테이블 연동
 
-- 테이블 먼저 만들고 연결 가능
+- `테이블 먼저 만들고 연결 가능`
 
 모델을 만들고 처음 실행하면 테이블 없을 시 자동 생성
 
@@ -153,13 +153,13 @@ npx sequelize init
         TRUE일 경우 createdAt, updatedAt 컬럼 자동 생성  
         `데이터 생성 날짜 와 수정 날짜 자동 삽입`
       - underscored  
-        기본적으로 이름은 Camel case 이나 Snake cas로 변경할건지
+        기본적으로 이름은 Camel case 이나 Snake case로 변경할건지
       - modelName  
         노드 프로젝트에서 사용할 모델 이름
       - tableName  
         데이터베이스의 테이블 이름
       - paranoid  
-        데이터 삭제 시 삭제하지 않고 deletedAt 컬럼 생성  
+        `데이터 삭제 시 삭제하지 않고` deletedAt 컬럼 생성  
         컬럼 값 true로 변경하고 조회할 때 제외
       - charset 과 collate  
         캐릭터 셋으로 `한글`은 utf8 이나 utf8_general 로 설정  
@@ -180,7 +180,7 @@ npx sequelize init
 삽입
   create
 조회
-  findONe
+  findOne
   findAll
 수정
   update
@@ -192,7 +192,7 @@ npx sequelize init
 
 ### 6)models 디렉토리의 초기 설정 파일에 생성한 모델을 사용할 수 있도록 추가 설정
 
-### 7) Good 사용할 설정 추가
+### 7) Good(모델) 사용할 설정 추가
 
 ### 8) Sequalize를 통한 CRUD 작업
 
@@ -215,21 +215,21 @@ npx sequelize init
 
 express, sequelize, sequelize-cli, mysql2, nodemon 설치
 
-#### sequelize 초기화
+#### sequelize `초기화`
 
 ```javascript
 npx sequelize init
 ```
 
-#### config.json 파일에 db 정보 저장
+#### `config.json` 파일에 db 정보 저장
 
-#### models 의 index.js 파일 수정
+#### `models` 의 index.js 파일 수정
 
 - 양식 고정으로 반복 작성 불필요
 
-#### app.js 로 설정 사용
+#### `app.js 로 설정` 사용
 
-#### 테이블 설계
+#### `테이블 설계`
 
 **일 대 다** 관계
 
