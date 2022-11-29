@@ -1,17 +1,17 @@
 ---
-title: ""
+title: "Node.js에서 데이터베이스 ORM"
 excerpt: ""
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop, html, html form, html tags]
+  - [Blog, kakaocloudschool, develop, node, ORM, database]
 
 toc: true
 toc_sticky: true
 
 date: 2022-11-28
-last_modified_at: 2022-11-28
+last_modified_at: 2022-11-29
 ---
 
 # SPA 구현 방법
