@@ -1,12 +1,13 @@
 ---
-title: ""
-excerpt: "Node에서 MariaDB를 연동하고
-테이블 생성, 컬럼 생성 등의 작업을 학습한다"
+title: "API Server과 JWT 인증 그리고 PASSPORT 모듈"
+excerpt: "API 로그인을 구현하기 위한 패키지에 대해 학습하고,
+API Server의 개념과 활용에 대해 학습하고,
+이를 진행할 수 있는 JWT 인증에 대해 학습한다."
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop, node, mariadb]
+  - [Blog, kakaocloudschool, develop, node, passport, api server, jwp]
 
 toc: true
 toc_sticky: true
@@ -42,9 +43,11 @@ last_modified_at: 2022-12-01
 
 ## 1. API(Application Programming Interface)
 
-프로그램 과 프로그램을 연결시켜주는 매개체
+`프로그램 과 프로그램을 연결시켜주는 매개체`
 
-### 다른 애플리케이션을 개발할 수 있게 도와주는 프로그램(SDK) 또는 데이터
+### 다른 애플리케이션을 개발할 수 있게 도와주는 프로그램(SDK)
+
+### 또는 데이터
 
 - JDK  
   java software development kit
@@ -56,16 +59,17 @@ last_modified_at: 2022-12-01
 #### 프로그램 개발에 도움, 여러 프로그램에서 공통으로 사용되는 데이터
 
 - 이럴 경우 데이터 제공
-- Open API  
+- **Open API**  
   누구나 등록하면 하면 사용할 수 있는 API
 
-`데이터 제공 시 데이터베이스 직접 접근이 아닌 애플리케이션 서버를 통해 제공`
+`데이터 제공 시 데이터베이스 직접 접근이 아닌`  
+`애플리케이션 서버를 통해 제공`
 
 ## 2. API Server 가 제공하는 데이터 포맷
 
-### 1) TXT / CSV
+### 1) txt / csv
 
-일반 텍스트로 구분 기호 포함
+일반 텍스트로 **구분 기호** 포함
 
 - `변하지 않는 데이터 제공`에 주로 사용
 - excel 이나 hwp, pdf 등으로 제공되는 경우도 있음
@@ -74,17 +78,17 @@ last_modified_at: 2022-12-01
 
 - eXtensible Markup Language
 
-태그의 해석을 브라우저가 아닌 개발자, 개발자 라이브러리 가 하는 형태
+태그의 **해석을 브라우저가 아닌 개발자**, 개발자 라이브러리 가 하는 형태
 
 - HTML 보다는 엄격한 문법
 - `설정 파일 이나 데이터 제공 용도`로 사용
 
 ### 3) json
 
-자바스크립트 객체 형태로 표현하는 방식
+**자바스크립트 객체 형태**로 표현하는 방식
 
-- XML 보다 가벼워 데이터 전송에 유리
-- JS 객체 표현법으로 데이터 표현하여 JS 나 Python 파싱이 쉬움
+- XML 보다 가벼워 `데이터 전송에 유리`
+- `JS 객체 표현법`으로 데이터 표현하여 JS 나 Python 파싱이 쉬움
 
 설정 보다는 `데이터 제공 용도`로 주로 사용
 
@@ -92,9 +96,9 @@ last_modified_at: 2022-12-01
 
 ### 4) yaml
 
-email 표기 형식으로 표현하는 방식
+**email 표기 형식**으로 표현하는 방식
 
-- 계층 구조를 가진 데이터 표현에 유리
+- `계층 구조를 가진 데이터 표현`에 유리
 - 확장자는 yml
 
 구글 `프로그램 설정`에 많이 사용
@@ -135,20 +139,23 @@ document : https://jwt.io
 
 - JSON 데이터 구조로 표현한 토큰
 
-API Server 나 로그인 이용 시스템에서 매번 인증하지 않고 `서버 와 클라이언트가 정보를 주고 받을 때` **HttpRequest Header** 에 **JSON 토큰**을 넣어 인증하는 방식
+API Server 나 로그인 이용 시스템에서 매번 인증하지 않고  
+`서버 와 클라이언트가 정보를 주고 받을 때`  
+**HttpRequest Header** 에 **JSON 토큰**을 넣어 인증하는 방식
 
-- HMAC 알고리즘을 사용하여 비밀키 나 RSA 기법을 이용해 Public / Private key 로 서명
+- **HMAC 알고리즘**을 사용하여  
+  `비밀키 나 RSA 기법`을 이용해 Public / Private key 로 서명
 
-  - 암호화 키 와 해독키를 다르게 생성
-    - 암호화 키는 누구나 알 수 있는 형태로 공개  
-       해독키는 비밀로 하는 방식
+  - `암호화 키 와 해독키를 다르게 생성`
+    - **암호화 키**는 누구나 알 수 있는 형태로 공개  
+       **해독키**는 비밀로 하는 방식
       구성
-    - HEADER  
-      토큰 종류 와 해시 알고리즘 정보
-    - PAYLOAD  
-      토큰의 내용물이 인코딩 된 부분
-    - SIGNATURE  
-      토큰이 변조되었는지 여부 확인하는 부분
+    - **HEADER**  
+      토큰 `종류 와 해시 알고리즘` 정보
+    - **PAYLOAD**  
+      토큰의 `내용물`이 인코딩 된 부분
+    - **SIGNATURE**  
+      토큰이 `변조`되었는지 여부 확인하는 부분
 
 클라이언트가 서버에게 `데이터를 요청`할 때 **키** 와 **Domain**을 `JSON token에 포함해 전송`
 
