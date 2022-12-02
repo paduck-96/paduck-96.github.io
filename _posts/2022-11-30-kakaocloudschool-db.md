@@ -12,7 +12,7 @@ toc: true
 toc_sticky: true
 
 date: 2022-11-30
-last_modified_at: 2022-11-30
+last_modified_at: 2022-12-01
 ---
 
 # Node + MongoDB + mongoose(Node 의 ODM)
