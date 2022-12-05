@@ -36,3 +36,21 @@ properties 의 약자
   this.props.이름 으로 사용
 - 함수형 컴포넌트  
   모든 props를 하나로 묶어 함수의 매개변수로 받아, 함수의 매개변수로 사용
+  ```javascript
+  // 함수형 컴포넌트
+  // App.js 파일에서
+  ...<컴포넌트 이름 name="">
+  // name에 작성한 값이 props 변수로 삽입
+  ```
+  - 기본 값 설정
+  ```javascript
+  컴포넌트이름.defaultProps = {props이름:값...}
+  // 기본 값 설정
+  ```
+  - 태그 안에 내용 사용
+  ```javascript
+  // 컴포넌트 파일에서
+  {
+    props.children;
+  }
+  ```
