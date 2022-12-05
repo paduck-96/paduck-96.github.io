@@ -1,24 +1,42 @@
+---
+title: "React의 특징과 생성 및 실행"
+excerpt: "React의 특징에 대해 학습하고
+어떻게 프로젝트를 생성하고 react를 실행하는지 학습한다"
+
+categories:
+  - Blog
+tags:
+  - [Blog, kakaocloudschool, develop, react]
+
+toc: true
+toc_sticky: true
+
+date: 2022-12-02
+last_modified_at: 2022-12-05
+---
+
 # React
 
 ## react
 
 유저 인터페이스를 만드는데 사용할 수 있는 자바스크립트 라이브러리
 
-SPA(Single Page Application) 구현을 위해 주로 사용
+`SPA(Single Page Application) 구현을 위해 주로 사용`
 
 - angular.js, vue.js 등
 
 **Component**
 
-- 특정 부분의 모양을 결정하는 선언체
+- **특정 부분의 모양**을 결정하는 선언체
   - HTML을 재생성해서 보여주는 템플릿 엔진과 다르게 많은 기능 내장
 - **Virtual DOM**을 이용해 `출력 속도가 빠름`
+
   - DOM 은 자바스크립트 내장 객체보다 처리 속도가 느림
   - `Virtual DOM`으로 출력 내용 메모리에 만든 후 `변경 시 적용`  
-    이후, 실제 DOM 과 `비교 후 변경되는 부분만 수정`해서 출력
-- 게임 화면 출력 방식과 유사
+     이후, 실제 DOM 과 `비교 후 변경되는 부분만 수정`해서 출력
+    > 게임 화면 출력 방식과 유사
 
-- 오로지 View를 위한 **라이브러리**
+- 오로지 **View**를 위한 **라이브러리**
   - MVC(Model View Controller)  
     MVVM(Model View ViewModel)  
     MVW(Model View Whatever)  
@@ -41,13 +59,13 @@ SPA(Single Page Application) 구현을 위해 주로 사용
   ```
 
 - 4. webpack  
-     프로젝트에 사용된 파일 분석해서 웹 문서 파일로 변환해주는 도구
+     프로젝트에 사용된 파일 분석해서 `웹 문서 파일로 변환`해주는 도구
 
-  - js, css, html 확장자 이외의 파일을 브라우저가 해석하게 변환
+  - js, css, html 확장자 `이외의 파일을 브라우저가 해석하게 변환`
 
 - 5. babel  
      ES6(ECMA 2015) 버전의 JS 문법까지 적용  
-     그 이상 버전의 문법을 ES6 이하로 바꾸어 이해 가능하게 도와줌
+     그 이상 버전의 `문법을 ES6 이하로 바꾸어` 이해 가능하게 도와줌
      - Trans Compiler
 
 - 6. IDE
@@ -73,8 +91,8 @@ SPA(Single Page Application) 구현을 위해 주로 사용
 ```javascript
 // powershell
 Set-ExecutionPolicy RemoteSigned // 권한 후
-yarn create-react-app 애플리케이션 이름
-npx create-react-app 애플리케이션 이름
+yarn create react-app 애플리케이션 이름
+npx create react-app 애플리케이션 이름
 ```
 
 - 기본 구조 자동 생성
@@ -120,19 +138,19 @@ JavaScript XML 의 약자로 `JS 에 XML을 추가한 확장형 문법`
 
 - 반드시 `하나의 부모 요소`로 시작
 
-  - root 요소 하나
+  - `root 요소 하나`
 
 - 태그는 반드시 닫아야 함
-- JS 내용 출력시 { } 안에 표현
+- `JS 내용 출력시 { } 안에 표현`
 
 - if 는 출력이 불가능하지만 **삼항 연산자**는 가능
 
-- 스타일을 적용할 때는 객체 형식으로 설정
+- **스타일**을 적용할 때는 `객체 형식`으로 설정
 
   - 문자열로 설정하지 않음
   - camel case로 작성
 
-- class 속성 대신에 className 이라는 속성 이용
+- class 속성 대신에 **className** 이라는 속성 이용
 
 ## 개발 플로그인
 
@@ -146,15 +164,15 @@ JavaScript XML 의 약자로 `JS 에 XML을 추가한 확장형 문법`
 문자열 상수의 작은 따옴표 나 큰 따옴표  
 ; 삽입 등 자동
 
-## Component
+## **Component**
 
 ### 개념
 
-화면을 구성하는 재사용 가능한 모듈
+`화면을 구성하는 재사용 가능한 모듈`
 
 - View 는 전체 화면을 대부분 의미
   - 재사용성 떨어짐
-- component 는 전체 화면의 일부분
+- `component 는 전체 화면의 일부분`
   - js 확장자에서 jsx, tsx 확장자 사용
 
 ### 생성 방식
@@ -171,11 +189,12 @@ JavaScript XML 의 약자로 `JS 에 XML을 추가한 확장형 문법`
     }
   }
   ```
-- Life Cycle 이용 가능  
+- `Life Cycle 이용 가능`  
   함수는 호출하면 안의 내용을 수항하고 호출한 곳으로 리턴
 
-  - 인스턴스는 한 버너 만들어지면 소멸시키기 전까지 존재
-  - 생성 시 생성자와 같은 메서드 호출되어 수명주기에 따른 작업 수월
+  - 인스턴스는 한 번 만들어지면 **소멸시키기 전**까지 존재
+  - 생성 시 생성자와 같은 메서드 호출되어  
+    **수명주기에 따른 작업** 수월
 
-- 내부 매서드 구현 가능
-- CBD 개발은 별도 파일에 컴포넌트 구성 후 통합 파일로 import
+- `내부 매서드 구현` 가능
+  - CBD 개발은 별도 파일에 컴포넌트 구성 후 통합 파일로 import
