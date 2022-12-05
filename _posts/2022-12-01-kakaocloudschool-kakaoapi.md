@@ -13,7 +13,7 @@ toc: true
 toc_sticky: true
 
 date: 2022-12-01
-last_modified_at: 2022-12-01
+last_modified_at: 2022-12-05
 ---
 
 ## 카카오 로그인 구현
@@ -34,7 +34,7 @@ last_modified_at: 2022-12-01
 
 ## 팔로우 처리
 
-- 로그인 시 정보 가져오게 하기 위해 passport.deserialized 수정
+- `로그인 시 정보 가져오게` 하기 위해 passport.deserialized 수정
 - page 파일에 유저 정보 초기화 미들웨어 수정
 - hashtag 요청 처리
 - user 라우팅 파일 추가
@@ -63,7 +63,7 @@ last_modified_at: 2022-12-01
   누구나 등록하면 하면 사용할 수 있는 API
 
 `데이터 제공 시 데이터베이스 직접 접근이 아닌`  
-`애플리케이션 서버를 통해 제공`
+**`애플리케이션 서버를 통해 제공`**
 
 ## 2. API Server 가 제공하는 데이터 포맷
 
@@ -133,11 +133,11 @@ last_modified_at: 2022-12-01
 
 ### 메인 실행 파일에 routes 디렉토리의 파일 등록
 
-## 4. JWT(JSON Web Token)
+## 4. **JWT(JSON Web Token)**
 
 document : https://jwt.io
 
-- JSON 데이터 구조로 표현한 토큰
+- `JSON 데이터 구조로 표현한 토큰`
 
 API Server 나 로그인 이용 시스템에서 매번 인증하지 않고  
 `서버 와 클라이언트가 정보를 주고 받을 때`  
@@ -148,8 +148,9 @@ API Server 나 로그인 이용 시스템에서 매번 인증하지 않고
 
   - `암호화 키 와 해독키를 다르게 생성`
     - **암호화 키**는 누구나 알 수 있는 형태로 공개  
-       **해독키**는 비밀로 하는 방식
-      구성
+       **해독키**는 비밀로 하는 방식  
+
+    구성
     - **HEADER**  
       토큰 `종류 와 해시 알고리즘` 정보
     - **PAYLOAD**  
