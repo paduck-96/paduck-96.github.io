@@ -1,11 +1,13 @@
 ---
 title: "React redux와 middleware, 가상 서버 제작"
-excerpt: ""
+excerpt: "React에서 redux를 활용한 프로젝트와 컨테이너를 학습하고,
+middleware를 활용해 적용하고,
+가상 서버로 서버를 대신해 학습한다."
 
 categories:
   - Blog
 tags:
-  - [Blog, kakaocloudschool, develop, react]
+  - [Blog, kakaocloudschool, develop, react, redux, container, middleware, virtual server]
 
 toc: true
 toc_sticky: true
@@ -30,7 +32,7 @@ last_modified_at: 2022-12-12
 
 ### custom redux module 설정
 
-- redux 모듈에는 패턴이 있음
+- redux 모듈에는 **패턴**이 있음
 
   1. 액션(행동 이름) 타입 정의
   2. 액션 생성 함수(발생하는 일) 정의
@@ -42,19 +44,19 @@ last_modified_at: 2022-12-12
 
 ### redux 적용
 
-- store 변수를 생성하고 이를 Provider를 통해 전달해주는 동일한 패턴
+- `store 변수를 생성하고 이를 Provider를 통해 전달`해주는 동일한 패턴
   - 최상위 index 폴더에 적용
   - createStore 함수 import 시 이름 변경 필요
 
 ### 컨테이너 컴포넌트 작업
 
-컨테이너 컴포넌트
+**`컨테이너 컴포넌트`**
 
 - redux를 사용하는 컴포넌트
 
 컨테이너 컴포넌트 생성
 
-- react-redux 의 connect( ) 사용
+- react-redux 의 **connect( ) 사용**
 
 ```javascript
 connect(mapStateToProps, mapDispatchToProps)(연동할 컴포넌트)
@@ -66,22 +68,22 @@ connect(mapStateToProps, mapDispatchToProps)(연동할 컴포넌트)
 
 ### 개요
 
-액션의 디스패치 후 리듀서에서 해당 액션(실 동작) 수행 전 / 후에 작업 진행
+액션의 `디스패치 후` 리듀서에서 해당 `액션(실 동작) 수행 전 / 후에 작업` 진행
 
-- 작업을 수행하기 전에는 유효성 검사 같은 작업 주로 진행
+- `작업을 수행하기 전`에는 **유효성 검사** 같은 작업 주로 진행
   - 정규 표현식을 통한 패턴 검증이 주
-- 작업 수행된 이후에는 로그 기록을 많이 진행
+- `작업 수행된 이후`에는 **로그 기록**을 많이 진행
   - 대부분 프로그램에서 진행(라이브러리 존재 확률)
 - Filter, Interceptor, AOP 등의 이름으로도 불림
 
 ### 미들웨어 적용
 
-- 최상위 파일에서 applyMiddleware 불러오기
+- 최상위 파일에서 **applyMiddleware** 불러오기
 
 ### 외부 라이브러리를 이용한 로그 기록
 
 - yarn add redux-logger
-- 결국은 로그 처리를 어떻게 할 것이냐가 중요
+- 결국은 **로그 처리**를 어떻게 할 것이냐가 중요
 
 ## 가상의 API Server 만들기
 
