@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "React redux와 middleware, 가상 서버 제작"
 excerpt: ""
 
 categories:
