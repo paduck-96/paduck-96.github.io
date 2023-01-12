@@ -191,3 +191,64 @@ DTO Entity
 - extends JpaRepository\<..>, QuerydslPredicateExecutor\<Entity 이름>
 
 ### Repository test 클래스 생성 후 샘플 데이터 삽입
+- save( )
+  - 기본키의 값을 설정하지 않거나 존재하지 않는 값이면 삽입,  
+존재하는 값이면 수정으로 처리
+
+### query dsl 테스트
+- 사용법
+  - **BooleanBuilder를** 생성
+  - 구문은 Predicate 타입의 함수를 생성
+  - BooleanBuilder에 작성된 Predicate을 추가하고 실행
+
+### title에 1이라는 글자가 포함된 Entity 조회
+
+## 11. Service Layer
+### Service 와 Controller 그리고 View 가 사용할 GuestBook 관련 DTO 클래스 생성
+
+### Service 인터페이스 생성
+- Service 에서 가장 많이 하는 것 중 하나가 DTO 와 Entity 사이의 변환
+  - 인터페이스에 default method로 추가해주는 것이 좋음}
+
+### ServiceImpl 클래스 생성
+
+### 데이터 삽입
+- Service 인터페이스에 데이터 삽입을 위한 메서드를 선언
+  
+- ServiceImpl 클래스에 데이터 삽입을 위한 메서드를 구현
+- ServiceTest 클래스를 만들어서 메서드 테스트
+
+### 목록 보기
+- 게시판 형태에서 목록 보기 요청
+  - 페이지 번호, 페이지 당 데이터 개수, 검색 항목, 검색 값  
+  (이런 형태의 요청 DTO 가 필요)
+
+- 목록 요청을 위한 DTO 클래스 생성
+
+- 응답을 위한 DTO
+
+- Service 인터페이스에 목록 보기를 위한 메서드를 선언
+    
+- ServiceImpl 클래스에 목록 보기를 위한 메서드를 구현
+
+- ServiceTest 클래스에 테스트 메서드를 작성하고 확인
+  
+- 페이지 번호 목록을 출력할 수 있도록 PageResponseDTO 수정
+
+- ServiceTest 클래스에 테스트 메서드를 만들어서 확인
+
+## 12. Controller 와 View
+### 목록 보기
+- ViewController를 수정
+
+- list.html 수정
+
+- 목록 보기를 JSON 데이터 형식으로 보내기 위한 Controller를 생성하고 요청 처리 메서드 작성
+
+
+## 13. 데이터 삽입 구현
+### ViewController에 데이터 삽입을 위한 메서드 추가
+
+### 데이터 삽입 화면 생성 - register.html
+
+### list.html 파일에 작성 링크를 만들고 메시지 출력 영역을 생성
