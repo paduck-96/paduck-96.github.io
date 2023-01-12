@@ -1,7 +1,7 @@
 ---
-title: "Java Spring Boot JPA의 쿼리 처리"
+title: "Java Spring Boot JPA의 쿼리 처리 와 서비스"
 excerpt: "Spring Boot를 활용해 JPA 상 쿼리를 처리하는 방법에 대해 학습하고,
-"
+이를 활용해 페이징 처리 및 CRUD 시스템 구현을 학습한다."
 
 categories:
 
