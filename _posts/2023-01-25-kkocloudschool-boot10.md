@@ -1,6 +1,7 @@
 ---
-title: "Java Spring Boot 서버 리뷰 처릭 관련 서비스"
-excerpt: "Spring Boot를 통한 리뷰 처리 서비스 과정에 대해 학습한다"
+title: "Java Spring Security를 활용한 로그인과 소셜 로그인"
+excerpt: "Spring Security를 활용해 로그인하는 과정에 대해 학습하고,  
+OAuth2를 활용한 소셜 로그인에 대해 학습한다"
 
 categories:
 
@@ -99,3 +100,87 @@ ClubMemberRole
   - (isAuthenticated), 권한 소유 여부(hasRole(권한)), authentication 등을 이용해서 사용자 정보를 추출
 
 - member.html 파일을 수정해서 로그인 정보 출력
+- Controller에서 로그인 한 유저의 정보를 확인
+
+### 회원 가입 처리
+- 회원 가입을 위한 DTO 클래스를 생성
+- 회원 관련 처리를 위한 서비스 인터페이스를 생성하고 회원 가입 처리 메서드를 선언 
+
+- 회원 관련 처리를 위한 서비스 클래스를 생성하고 회원 가입 처리 메서드를 구현
+
+- 회원 가입을 위한 요청 처리 코드를 MemberController 클래스에 추가
+- 회원 가입 화면을 생성
+
+## 7. OAuth
+### 개요
+- 인증 서비스를 제공하는 업체들의 공통된 인증 방식(**Open Authorization**)
+
+### Kakao Login
+- developers.kakao.com에 접속을 해서 애플리케이션을 등록하고 REST API 키를 복사
+
+- 키 화면 하단에서 플랫폼 등록  
+Web - http://localhost
+
+- 왼쪽 화면에서 카카오 로그인을 클릭하고 카카로 로그인을 활성화
+
+- 하단으로 내려서 Redirect URI 설정 
+  - http://localhost/login/oauth2/code/kakao
+
+- 왼쪽 상단의 메뉴 중에서 동의항목을 클릭해서 수집하고자 하는 정보를 선택
+
+- 왼쪽에서 보안 메뉴를 클릭하고 Client Secret 을 눌러서 코드를 발급 받아서 저장
+
+- build.gradle 파일의 OAuth2 라이브러리의 의존성이 설정되어 있지 않으면 추가
+  - implementation   
+  'org.springframework.boot:spring-boot-starter-oauth2-client'
+
+- application.yml 파일에 카카오 로그인 설정 관련 코드를 추가
+```java
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: 
+            client-secret: 
+            redirect-uri: http://localhost/login/oauth2/code/kakao
+            authorization-grant-type: authorization_code
+            client-authentication-method: POST
+            client-name: Kakao
+            scope:
+              - profile_nickname
+              - account_email
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+```
+- CustomSecurityConfig 클래스의 **filterChain** 메서드,  
+OAuth2 가 사용하는 로그인 URL을 설정
+```java
+        //Oauth2 가 사용할 로그인 URL 설정
+        http.oauth2Login().loginPage("/member/login");
+```
+
+- login.html 파일에 카카오 로그인 링크를 추가
+- 여기까지 작업을 하고 애플리케이션을 실행하면 카카오 로그인까지는 수행
+
+- OAuth2 로그인 방식으로 로그인 된 경우 처리할 서비스 클래스를 추가하고 작성 
+
+### OAuth2를 사용했을 때 문제점
+- 매번 새로운 유저로 판단 
+  - email 같은 정보를 데이터베이스 테이블에 저장해서,  
+  이전에 로그인 한 적이 있는 유저인지 판단
+  - 여러가지 로그인 방법을 제시하는 경우 서로 다른 유저로 판단하는 문제  
+    - 재가입을 시키는 형태로 해결  
+  이 때 이메일을 전부 등록해 소셜로 로그인했을 때 아이디를 찾아주는 방식
+
+### 카카오로 로그인 성공했을 데이터베이스에 등록하기
+- Spring Security 가 사용하고 있는 ClubMemberSecurityDTO 클래스를 수정
+- 소셜 로그인을 수행한 후 이메일을 가진 사용자를 찾아보고 없는 경우에는 회원가입,  
+ 있는 경우에는 그 정도를 리턴하도록 CustomOAuth2UserService 클래스 수정
+
+- 실행 한 후 소셜로 로그인 했을 때 회원 가입이 되어 있는지 확인
