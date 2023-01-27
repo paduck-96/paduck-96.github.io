@@ -17,7 +17,74 @@ last_modified_at: 2023-01-26
 
 ---
 
-...
+## 1. GNU 프로젝트
+
+- `유닉스와 호환되는 자유 소프트웨어`를 개발하는 프로젝트
+- GNU is Not Unix
+  - Unix의 상용화 반대
+- GPL 라이선스 제정
+
+## 2. Linux
+
+- Git을 이용해서 커널의 소스 코드를 공개
+- 리눅스 = 리누스 + 유닉스
+
+### 리눅스의 종류
+
+- Debian -> Ubuntu
+- Slackware -> Open SUSE
+- Redhat -> Fedora, Cent OS
+
+### 리눅스 구조
+
+- **Kernel**  
+  핵심 구조, 관리
+
+- **Shell**  
+  명령어 인터페이스
+
+- **Utility**  
+  기타 응용 프로그램
+
+- 사용자 <-> Shell <-> Kernel <-> H/W
+
+### Ubuntu
+
+- 데비안 계열에서 가장 성공한 데스크톱 배포판
+- `GNOM 이라는 GUI 환경`을 제공
+- 현재는 구글이 가장 많이 사용
+
+### 설치
+
+- 컴퓨터에 직접 설치
+  - 로컬 컴퓨터나 랜탈 환경에 설치
+- 가상 머신 이용
+- 도커 와 같은 컨테이너 이용
+  - 리눅스를 학습할 때는 비추천
+
+### 가상 머신
+
+- `현재 운영체제에 가상의 컴퓨터를 생성`한 후,  
+  여기에 운영체제를 설치할 수 있도록 해주는 소프트웨어
+- 종류
+
+  - VMWare
+  - Virtual PC
+  - Virtual Box  
+    Oracle에서 제공
+
+- Virtual Box 다운로드  
+  https://www.virtualbox.org/wiki/Downloads
+- 윈도우즈에서는 Microsoft Visual C++ 재배포 패키지를 설치,  
+  우분투 22.4 버전을 설치하면 터미널이 설치가 안될 수 있으므로,  
+   VMware를 이용해서 설치하거나 Virtual Box 와 우분투 버전을 낮춰서 20 버전을 설치
+
+- Mac에서는 VMWare Fusion을 설치하고 설치하는데 M1에서 설치가 안되면 UTM을 사용해서 설치
+
+### 가상 머신에 리눅스 설치
+
+- 리눅스 이미지가 필요
+- 우분투 리눅스 이미지 다운로드:
 
 ## 3. Editor
 
