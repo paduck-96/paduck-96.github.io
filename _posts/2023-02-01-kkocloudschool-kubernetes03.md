@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes  pod 관리"
+title: "Kubernetes  NameSpace"
 excerpt: "Kuberentes pod 관리와 모니터링에 대해 학습한다"
 
 categories:
