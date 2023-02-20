@@ -1,6 +1,7 @@
 ---
-title: "Kubernetes  Auth - 카카오 특강"
-excerpt: "Kubernets의 인증에 대해 학습한다"
+title: "우분투 설치하여 도커 사설 저장소까지"
+excerpt: "os설치를 통해 vm을 구성해보고,  
+도커를 깔고 이미지를 build 해 사설 저장소에 저장해보는 것을 학습한다"
 
 categories:
 
